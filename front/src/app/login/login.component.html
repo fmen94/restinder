@@ -1,0 +1,11 @@
+<section>
+    <div>
+      <h2>Registrate</h2>
+      <input placeholder="Ingrese su email" [(ngModel)]="auth.email" type="text" required>
+      <br>
+      <input placeholder="Ingrese su password" [(ngModel)]="auth.password"  type="password" required>
+      <button (click)="login()">Registrarse</button>
+      <p>No tienes cuenta? <span (click)="redirectSignup()" >Click aquí</span></p>
+    </div>
+</section>
+  
