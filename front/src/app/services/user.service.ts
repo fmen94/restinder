@@ -25,7 +25,7 @@ export class UserService {
     return this.http.get(this.url+'/user/vacancies/'+id)
     .pipe(map(res=>res.json()))
   }
-  //en proceso
+
   applicantsVacancies(p): Observable<string>{
     return this.http.put(this.url+'/user/vacancies/'+p._id, p)
     .pipe(map(res=>res.json()))
@@ -34,9 +34,9 @@ export class UserService {
     return this.http.get(this.url+'/user/myvacancies/'+id)
     .pipe(map(res=>res.json()))
   }
-  //en proceso
-  deliteVcancies(auth): Observable<string>{
-    return this.http.put(this.url+'', auth)
+ 
+  deliteVcancies(p): Observable<string>{
+    return this.http.put(this.url+'/user/myvacancies/'+p._id, p)
     .pipe(map(res=>res.json()))
   }
   newInterview(obj): Observable<string>{

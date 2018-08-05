@@ -19,15 +19,27 @@ export class VacanciesComponent implements OnInit {
   solicitar(p){
     p.applicants.push(this.user._id)
     this.userService.applicantsVacancies(p)
+    .subscribe(res=>{
+      let result: any= res
+      this.router.navigate(['interview/',result._id, result.restaurant])
+    })
+    
+  }
+  restaurant(p){
+    //ir al restaurante!!!!
     console.log(p)
+  }
+  regresar(){
+    this.router.navigate(['userProfile'])
   }
   ngOnInit() {
     this.user= localStorage.getItem("user")
     this.user=JSON.parse(this.user)
     this.userService.getVacancies(this.user._id)
     .subscribe(res =>{
-      this.vacances= res
-      console.log(this.vacances)
+      this.vacances=res
+      console.log(res)
+     
     })
     
 

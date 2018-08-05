@@ -1,4 +1,4 @@
-<h2 *ngIf="profile.username"> Bienbenido {{profile.username}}</h2>
+<h2> Bienbenido {{profile.username}}</h2>
 
 <h3>Tus datos:</h3>
 <img src="{{profile.photoURL}}" alt="{{profile.photoURL}}">
@@ -11,5 +11,6 @@
 <h4>Numero Telefonico: </h4><input type="text" value="{{profile.phoneNumber}}" [(ngModel)]="profile.phoneNumber">
 <h4>Experiencia: <h4><textarea type="text" value="{{profile.experience}}" [(ngModel)]="profile.experience"></textarea>
 <button (click)="edit()">Editar</button>
-<button (click)="vacancies()">ir a vacancies</button>
+<button (click)="vacancies()">Ir a vacancies</button>
+<button (click)="myVacancies()" >Ver mis solicitudes</button>
 

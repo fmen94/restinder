@@ -42,6 +42,7 @@ router.get('/user/vacancies/:id',(req, res) =>{
     Vacancies.find({}).populate('restaurant')
         .then(vacancies=>{
             return res.status(202).json(vacancies)
+            
         })
         .catch(err=> {
             return res.status(404).json(err);
@@ -49,15 +50,6 @@ router.get('/user/vacancies/:id',(req, res) =>{
 })
 
 //applicants in vacancies
-// router.put('/user/vacancies/:id',(rec, res, next)=>{
-//     const applicants =rec.body.applicants
-//     applicants.push(req.params.id)
-//     Vacancies.findByIdAndUpdate(req.body._id, , { new: true } )
-// })
-
-
-
-
 
 router.put('/user/vacancies/:id',(req,res,next) =>{
     Vacancies.findByIdAndUpdate(req.params.id, req.body, { new: true } )
@@ -73,7 +65,7 @@ router.put('/user/vacancies/:id',(req,res,next) =>{
 
 
 router.get('/user/myvacancies/:id',(req, res) =>{
-    Vacancies.find({applicants: req.params.id})
+    Vacancies.find({applicants: req.params.id}).populate('restaurant')
         .then(vacancies=>{
             return res.status(202).json(vacancies)
         })
@@ -84,14 +76,13 @@ router.get('/user/myvacancies/:id',(req, res) =>{
 
 //delete vacancies applied (en proceso)
 router.put('/user/myvacancies/:id', (req, res, next) => {
-    const vacancie= Vacancies.findById(req.body)
-        .then(vacancies => {
-         console.log(vacancies.applicants);
+    Vacancies.findByIdAndUpdate(req.params.id, req.body, { new: true } )
+        .then(vacancies=>{
+            return res.status(202).json(vacancies)
         })
-        .catch(e=>{
-            res.status(500).json({message:"algo falló"})
-            next(e)
-        });
+        .catch(err=> {
+            return res.status(404).json(err);
+        })
 });
 
 //new interview
@@ -117,7 +108,6 @@ router.put('/user/interviews/:id',(req,res)=>{
         });
 })
 
-//*************************hasta aqui esta probado*********** */
 //interview of user
 router.get('/user/interviews/:id',(req,res)=>{
     Interview.find({user:req.params.id}).populate('restaurant')
@@ -179,7 +169,7 @@ router.delete('/user/comments/:id', (req, res, next) => {
 
 //comments of user
 router.get('/user/comments/:id',(req,res)=>{
-    Interview.find({user:req.params.id}).populate('restaurant')
+    Comments.find({user:req.params.id}).populate('restaurant')
     .then(comment=>{
         res.status(200).json(comment)
     })

@@ -19,6 +19,13 @@ const upload = multer({dest: './public/assets'});
 
 //midelwares
 
+function authenticate(req,res,next){
+    passport.use(User.createStrategy());
+    passport.serializeUser(User.serializeUser());
+    passport.deserializeUser(User.deserializeUser());
+    
+}
+
 function isAuthenticated(req,res,next){
     if(req.isAuthenticated()){
         console.log(req.user)
@@ -67,12 +74,9 @@ function isLoggedIn(req,res,next){
 //login
 
 router.post('/user/login', passport.authenticate('local'), (req,res,next)=>{
-    res.json(req.user)
+    res.send(req.user)
 });
 
-router.post('/restaurant/login', passport.authenticate('local'), (req,res,next)=>{
-    res.json(req.user)
-});
 
 
 

@@ -10,7 +10,7 @@ import {UserService} from './../services/user.service'
 })
 export class UserProfileComponent implements OnInit {
   location={}
-  profile= null
+  profile: any
   editado= false
   constructor(
     private ruter: Router,
@@ -22,23 +22,21 @@ export class UserProfileComponent implements OnInit {
     .subscribe(res=>{
       this.profile=res
       this.editado= true
-      console.log(this.profile)
-      console.log(this.editado)
+      this.profile=localStorage.setItem("user", res)
     })
   }
   vacancies(){
     this.ruter.navigate(['vacancies'])
   }
+  myVacancies(){
+    this.ruter.navigate(["myVacances"])
+  }
 
   ngOnInit() {
     let user: any= localStorage.getItem("user")
     user=JSON.parse(user)
-    //let id= user._id
-    this.userService.getProfile(user._id)
-    .subscribe(res=>{
-      this.profile=res
-      console.log(this.profile)
-    })
+    console.log(user)
+    this.profile= user
     
 
   }}

@@ -1,0 +1,15 @@
+
+
+<section>
+  <div>
+    <h2>Registrate</h2>
+    <input [(ngModel)]="auth.username" placeholder="Nombre del restaurante" type="text" required>
+    <input placeholder="Ingrese su email" [(ngModel)]="auth.email" type="email" required>
+    <br>
+    <p *ngIf="auth.password!= auth.password2" style="color: red">Tu contraseña no coicide</p>
+    <input placeholder="Ingrese su password" [(ngModel)]="auth.password"  type="password" required>
+    <input placeholder="Ingrese su password" [(ngModel)]="auth.password2"  type="password" required>
+    <button (click)="signup()">Registrarse</button>
+    <p>Ya tienes cuenta? <span (click)="redirectLogin()" >Click aquí</span></p>
+  </div>
+</section>

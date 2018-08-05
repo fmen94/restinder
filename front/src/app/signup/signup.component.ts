@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     if(localStorage.getItem('user')){
-      this.router.navigate(['products'])
+      this.router.navigate(['userProfile'])
     }
   }
 

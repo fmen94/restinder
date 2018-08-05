@@ -63,7 +63,7 @@ app.use(require('node-sass-middleware')({
 const passport = require('./helpers/passport')
 app.use(passport.initialize())
 app.use(passport.session())
-      
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

@@ -1,0 +1,13 @@
+<div *ngFor="let p of interviews" >
+    <h2>Solicitante: {{p.user.username}}</h2>
+    <h2>Puesto solicitado: {{p.vacancies.position}}</h2>
+    <img src="{{p.user.photoURL}}" alt="">
+    <h3>Email: {{p.user.email}}</h3>
+    <h3>Experiencia: {{p.user.experience[0]}}</h3>
+    <h3>numero telefonico: {{p.user.phoneNumber}}</h3>
+    <h3>Edad: {{p.user.age}}</h3>
+    <h3>Fecha: {{p.date[0]}}{{p.date[1]}}{{p.date[2]}}{{p.date[3]}}{{p.date[4]}}{{p.date[5]}}{{p.date[6]}}{{p.date[7]}}{{p.date[8]}}{{p.date[9]}}</h3>
+    <h3>hora: {{p.hour}}</h3>
+</div>
+
+<button (click)="regresar()" >Regresar</button>

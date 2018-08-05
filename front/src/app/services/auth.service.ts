@@ -13,6 +13,8 @@ export class AuthService {
     private http: Http
   ) { }
 
+
+
   signupUser(auth): Observable<string>{
     return this.http.post(this.url + 'user/signup', auth)
     .pipe(map(res=>res.json()))
@@ -27,14 +29,17 @@ export class AuthService {
     return this.http.post(this.url + 'user/login', auth, {withCredentials:true})
     .pipe(map(res=>res.json()))
   }
+  loginRestaurant(auth): Observable<string>{
+    return this.http.post(this.url + 'restaurant/login', auth, {withCredentials:true})
+    .pipe(map(res=>res.json()))
+  }
 
 
 
 
 
 
-
-
+  
 
 
 }

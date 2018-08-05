@@ -10,6 +10,12 @@ const commentsSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    answer:{
+        type: Object,
+        title: String,
+        text: String
+
+    },
     title: String,
     text: String
 }

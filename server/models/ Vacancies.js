@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const vacanciesSchema = new Schema({
     title: String,
+
     position: String,
     restaurant: {
         type: Schema.Types.ObjectId,

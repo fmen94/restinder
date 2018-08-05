@@ -1,0 +1,15 @@
+<section>
+  <div>
+
+    <h2>Nueva Comentario</h2>
+    <h3 *ngIf="comentado" style="color: red" >Tu comentario fue entregado</h3>
+    <h3>Solicitante: {{user.username}}</h3>
+    <h4>Titulo</h4>
+    <input [(ngModel)]="title" type="text" required>
+    <h4>Comentario</h4>
+    <textarea [(ngModel)]="text" type="text" ></textarea>
+   
+   <button (click)="newcomment()" >Comentar</button>
+  </div>
+  <button (click)="return()" >Regresar</button>
+</section>

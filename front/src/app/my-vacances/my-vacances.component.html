@@ -1,0 +1,12 @@
+<h1>My vacancies</h1>
+<section *ngFor="let p of vacances" >
+  <h2>{{p.title}}</h2>
+  <img src="{{p.restaurant.photoURL}}" alt="">
+  <h3>{{p.position}}</h3>
+  <h3>{{p.salary}}</h3>
+  <h3>{{p.description}}</h3>
+  <h3>{{p.schedule}}</h3>
+  <button (click)="noSolicitar(p)" >Dejar de solicitar</button>
+  <button (click)="comment(p.restaurant._id)" >Comentar</button>
+</section>
+<button (click)="regresar()">regresar</button>

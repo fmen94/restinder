@@ -1,0 +1,22 @@
+<button (click)="return()" >Regrsar</button>
+<h3 *ngIf="del" style="color: red" >{{user.username}} tu Comentario fue borrado</h3>
+<div *ngFor="let p of commnet" >
+  <div *ngIf="p.restaurant._id==restaurant">
+    
+    <h2>{{user.username}}:</h2>
+    <h3>Tilulo: {{p.title}}</h3>
+    <h3>Comentario: {{p.text}}</h3>
+    <h2>Respuesta de {{p.restaurant.username}}:</h2>
+    <div *ngIf="p.answer">
+        
+      <h3>Tilulo: {{p.answer.title}}</h3>
+      <h3>Comentario: {{p.answer.text}}</h3>
+    </div>
+    <div *ngIf="!p.answer"><h3>{{p.restaurant.username}} no ha respondido</h3></div>
+    <button (click)="delite(p._id)" >Borrar</button>
+  </div>
+  
+  
+
+</div>
+<button (click)="new(restaurant)" >Comentar</button>

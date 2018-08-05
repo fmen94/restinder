@@ -1,11 +1,45 @@
+
 const express = require('express')
 const router = express.Router()
 const Restaurant = require('../models/Restaurant')
 const Vacancies=require('../models/ Vacancies')
 const Interview= require ('../models/Interview')
+const Comment= require ("../models/Comments")
 //archivos
 const multer = require('multer')
 const uploads = multer({dest: './public/images'})
+
+const passport = require('passport');
+
+
+
+
+//midelware
+
+
+function authenticatePro(req, res, next){
+    console.log("midelware")
+    Restaurant.findOne({email: req.body.email})
+        .then(res=>next(e))
+        .catch(e=>res.json(e))
+    }
+
+
+
+
+//login
+
+
+router.post('/restaurant/login', (req,res,next)=>{
+    Restaurant.findOne({email: req.body.email})
+    .then(restaurant => {
+        return res.status(200).json(restaurant);
+    })
+    .catch(err => {
+        return res.status(500).json(err);
+    });
+});
+
 
 //get profile
 
@@ -57,21 +91,20 @@ router.get('/restaurant/vacancies/:id', (req, res) => {
             return res.status(200).json(vacancies);
         })
         .catch(err => {
-            return res.status(500).json(err);
+            return res.status(404).json(err);
         });
 });
 
 //show one vacancie
 
-router.get('/restaurant/onevacancie/:id', (req, res) => {
-    Vacancies.findById(req.params.id)
+router.get('/restaurant/onevacancies/:id', (req, res) => {
+    Vacancies.findOne({_id:req.params.id}).populate('applicants')
         .then(vacancie => {
-
             //if (!user) return res.status(404)
             return res.status(200).json(vacancie);
         })
         .catch(err => {
-            return res.status(500).json(err);
+            return res.status(404).json(err);
         });
 });
 
@@ -79,8 +112,7 @@ router.get('/restaurant/onevacancie/:id', (req, res) => {
 
 //edit vacancie
 
-router.put('/restaurant/onevacancie/:id',  uploads.single('image'), (req, res, next) => {
-    if(req.file) req.body.image = '/images/' + req.file.filename
+router.put('/restaurant/onevacancies/:id', (req, res, next) => {
     Vacancies.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then(vacancies => {
             return res.status(202).json(vacancies)
@@ -105,7 +137,7 @@ router.delete('/restaurant/onevacancie/:id', (req, res, next) => {
 
 //users applicants
 
-router.post('/restaurant/vacancies/applicants/:id',(req,res,next)=>{
+router.post('/restaurant/vacanciess/applicants/:id',(req,res,next)=>{
     Vacancies.find({restaurant:req.params.id}).populate('applicants')
     .then(vacancies=>{
         res.status(200).json(vacancies)
@@ -117,8 +149,8 @@ router.post('/restaurant/vacancies/applicants/:id',(req,res,next)=>{
 })
 //coments of restaurants
 
-router.get('/restaurant/interviews/:id',(req,res)=>{
-    Interview.find({restaurant:req.params.id}).populate('user')
+router.get('/restaurant/comments/:id',(req,res)=>{
+    Comment.find({restaurant:req.params.id}).populate('user')
     .then(comment=>{
         res.status(200).json(comment)
     })
@@ -127,5 +159,27 @@ router.get('/restaurant/interviews/:id',(req,res)=>{
     })
 });
 
+//respond comment
+
+router.put('/restaurant/comments/:id',(req,res)=>{
+    Comment.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then(comment=>{
+        res.status(202).json(comment)
+    })
+    .catch(err=> 
+        {res.status(404).json(err)
+        });
+})
+
+//Interview of vacances
+router.get('/restaurant/interview/:id',(req,res)=>{
+    Interview.find().populate('vacancies').populate('user')
+    .then(vacancie=>{
+        res.status(200).json(vacancie)
+    })
+    .catch(err=>{
+        res.status(404).json(err)
+    })
+});
 
 module.exports = router;

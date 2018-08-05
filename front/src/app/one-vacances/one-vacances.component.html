@@ -1,0 +1,12 @@
+<h3 *ngIf="editado" >Tu perfil ha sido cambiado</h3>
+
+
+<h2>{{title}}</h2>
+<h4>Title:</h4><input type="text"  value="{{title}}" [(ngModel)]="title">
+<h4>correo: </h4><input type="text" value="{{position}}" [(ngModel)]="position">
+<h4>Direccion: </h4><input type="text" value="{{salary}}" [(ngModel)]="salary">
+<h4>Telefono: </h4><input type="text" value="{{schedule}}"  [(ngModel)]="schedule">
+<h4>Descripcion: </h4><textarea type="text" value="{{description}}" [(ngModel)]="description"></textarea> 
+
+<button (click)="return()">Regresear</button>
+<button (click)="edit()">Editar</button>

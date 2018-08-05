@@ -22,9 +22,18 @@ const restaurantSchema = new require('mongoose').Schema({
             ref: 'Vacancies'
         }
     ],
-    style: String,
-    phoneNumber: String,
-    email: String,
+    style:{
+        type: String,
+        default: ""
+    },
+    phoneNumber: {
+        type: String,
+        default: ""
+    },
+    descripcion: {
+        type: String,
+        default: ""
+    },
     comments:[
         {
             type: Schema.Types.ObjectId,

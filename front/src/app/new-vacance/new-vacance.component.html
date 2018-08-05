@@ -1,0 +1,13 @@
+<section>
+  <div>
+    <h2>Nueva Vacance</h2>
+    <h3 *ngIf="create" style="color: red">Tu Vacante fue creada</h3>
+    <h4>Titulo: </h4><input type="text" [(ngModel)]="title" >
+    <h4>Posicion: </h4><input type="text" [(ngModel)]="position" >
+    <h4>Salario: </h4><input type="text" [(ngModel)]="salary" >
+    <h4>Horario: </h4><input type="text"  [(ngModel)]="schedule" >
+    <h4>Descripcion: </h4><textarea type="text" [(ngModel)]="description" ></textarea>
+      <button (click)="send()">Crear</button>
+      <button (click)="regresar()">Regresar</button>
+  </div>
+</section>

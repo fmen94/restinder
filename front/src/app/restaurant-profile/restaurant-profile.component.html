@@ -1,0 +1,18 @@
+<h2> Restaurante: {{user.username}}</h2>
+
+<h3>Tus datos:</h3>
+<h1>{{user.photoURL}}</h1>
+<img [src]="user.photoURL" alt="">
+<br>
+<h3 *ngIf="editado" >Tu perfil ha sido cambiado</h3>
+<h4>Nombre: </h4><input type="text"  value="{{user.username}}" [(ngModel)]="user.username">
+<h4>correo: </h4><input type="text" value="{{user.email}}" [(ngModel)]="user.email">
+<h4>Direccion: </h4><input type="text" value="{{user.location.address}}" [(ngModel)]="user.location.address">
+<h4>Telefono: </h4><input type="text" value="{{user.phoneNumber}}"  [(ngModel)]="user.phoneNumber">
+<h4>Estilo: </h4><input type="text" value="{{user.style}}"  [(ngModel)]="user.style">
+<h4>Descripcion: </h4><textarea type="text" value="{{user.descripcion}}" [(ngModel)]="user.descripcion"></textarea>
+
+ <button (click)="edit()">Editar</button>
+ <button (click)="vacancies()">Mis vacancies</button>
+ <button (click)="comentarios()">Ir a comentarios</button>
+ <button (click)="interviews()">Entrvistas</button>

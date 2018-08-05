@@ -1,0 +1,10 @@
+<section>
+  <div>
+    <h2>Nueva Entrevista {{interview.restaurant}}</h2>
+    <h3>Solicitante: {{user.username}}</h3>
+    <h4>Fecha de la Entrevista</h4><input [(ngModel)]="date" type="date" required>
+    <h4>Hora</h4><input [(ngModel)]="hour" type="time" required>
+   
+   <button (click)="solicitar()" >Enviar Solicitud</button>
+  </div>
+</section>

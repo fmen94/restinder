@@ -1,0 +1,26 @@
+
+<h3 *ngIf="listo" style="color: red" >Tu respuesta ha sido mandada</h3>
+<div *ngFor="let p of comments" >
+<h2>Solicitnte: {{p.user.username}}</h2>
+
+<h3>Titulo: {{p.title}}</h3>
+<h4>Comentario. {{p.text}}</h4>
+<h2>Respuesta:</h2>
+    <div *ngIf="p.answer">
+        
+      <h3>Tilulo: {{p.answer.title}}</h3>
+      <h3>Comentario: {{p.answer.text}}</h3>
+    </div>
+    <div *ngIf="!p.answer"><h3>No has respondido</h3></div>
+
+<button *ngIf="!resp" (click)="respond(p._id)" >Responder</button>
+<div *ngIf="resp == p._id" >
+  <h3>Titulo de la respuesta</h3>
+  <input [(ngModel)]="title" type="text">
+  <h4>Respuesta</h4>
+  <textarea [(ngModel)]="text"  ></textarea>
+  <button (click)="responder(p._id)" >Responder</button>
+
+</div>
+</div>
+<button (click)="return()" >Regresar</button>
