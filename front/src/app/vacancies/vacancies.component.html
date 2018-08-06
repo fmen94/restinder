@@ -2,17 +2,16 @@
 <section *ngFor="let p of vacances" >
 
  
-  <h2>{{p.title}}</h2>
-  <h3>{{p.position}}</h3>
+  <h2>Titulo: {{p.title}}</h2>
+  <h3>Puesto: {{p.position}}</h3>
   <img src="{{p.restaurant.photoURL}}" alt="{{p.restaurant.photoURL}}">
-  <h3>{{p.restaurant.username}}</h3>
-  <h3>{{p.restaurant.email}}</h3>
+  <h3>Restaurante: {{p.restaurant.username}}</h3>
+  <h3>Email: {{p.restaurant.email}}</h3>
   
-  <h3>{{p.salary}}</h3>
-  <h3>{{p.description}}</h3>
-  <h3>{{p.schedule}}</h3>
+  <h3>Salario: {{p.salary}}</h3>
+  <h3>Descripcion: {{p.description}}</h3>
+  <h3>Horario: {{p.schedule}}</h3>
   <button (click)="solicitar(p)" >Solicitar</button>
   <button (click)="restaurant(p.restaurant._id)" >Ver restaurante</button>
 </section>
-<h1>{{user._id}}</h1>
 <button (click)="regresar()">regresar</button>

@@ -17,7 +17,8 @@ import { NewVacanceComponent } from './new-vacance/new-vacance.component';
 import { NewCommentComponent } from './new-comment/new-comment.component';
 import { RestaurantInterviewsComponent } from './restaurant-interviews/restaurant-interviews.component';
 import { UserCommentsComponent } from './user-comments/user-comments.component';
-
+import { UserInterviewsComponent } from './user-interviews/user-interviews.component';
+import { UserRestaurantComponent } from './user-restaurant/user-restaurant.component';
 
 export const routes: Routes = [
     { path: 'home',  component: AppComponent },
@@ -37,5 +38,7 @@ export const routes: Routes = [
     { path: 'newcomment/:res',  component: NewCommentComponent },
     { path: 'restaurantinterview/:id',  component: RestaurantInterviewsComponent },
     { path: 'usercomments/:restaurant',  component: UserCommentsComponent },
+    { path: 'userinterviews',  component: UserInterviewsComponent },
+    { path: 'userrestaurant/:id',  component: UserRestaurantComponent },
 ]
 

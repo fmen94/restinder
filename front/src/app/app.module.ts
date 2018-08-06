@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms'
 import { RouterModule } from "@angular/router";
 import {HttpModule} from '@angular/http'
-
+import { AgmCoreModule } from '@agm/core';
 
 //routes
 import {routes} from './routes'
@@ -27,12 +27,15 @@ import { NewVacanceComponent } from './new-vacance/new-vacance.component';
 import { NewCommentComponent } from './new-comment/new-comment.component';
 import { RestaurantInterviewsComponent } from './restaurant-interviews/restaurant-interviews.component';
 import { UserCommentsComponent } from './user-comments/user-comments.component';
-
+import { UserInterviewsComponent } from './user-interviews/user-interviews.component';
+import { UserRestaurantComponent } from './user-restaurant/user-restaurant.component';
 
 //services
 import {AuthService} from './services/auth.service';
 import {UserService} from './services/user.service';
 import {RestaurantService} from './services/restaurant.service';
+
+
 
 
 
@@ -56,13 +59,19 @@ import {RestaurantService} from './services/restaurant.service';
     NewVacanceComponent,
     NewCommentComponent,
     RestaurantInterviewsComponent,
-    UserCommentsComponent
+    UserCommentsComponent,
+    UserInterviewsComponent,
+    UserRestaurantComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    HttpModule
+    HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCJAsXtHWBQnT38jSoVFTZ3QwqvaCrn4RE',
+      libraries: ["places"]
+    })
   ],
   providers: [
     AuthService,

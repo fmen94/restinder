@@ -44,7 +44,7 @@ export class UserService {
     .pipe(map(res=>res.json()))
   }
   editInterview(obj): Observable<string>{
-    return this.http.put(this.url+'/user/interviews/'+obj._id, obj)
+    return this.http.put(this.url+'/user/interview/'+obj._id, obj)
     .pipe(map(res=>res.json()))
   }
   getInterview(id): Observable<string>{
@@ -69,6 +69,10 @@ export class UserService {
   }
   myComments(id): Observable<string>{
     return this.http.get(this.url+'/user/comments/'+id)
+    .pipe(map(res=>res.json()))
+  }
+  getRestaurant(id): Observable<string>{
+    return this.http.get(this.url+'/user/restaurant/'+id)
     .pipe(map(res=>res.json()))
   }
 

@@ -1,4 +1,5 @@
 <h1>My vacancies</h1>
+<h2 *ngIf="del" style="color: red" >Tu vacante fue eliminada</h2>
 <button  (click)="newVac()" >Crear Vacante</button>
 <section *ngFor="let p of vacances" >
   <h2>{{p.title}}</h2>
@@ -7,6 +8,6 @@
   <h3>{{p.description}}</h3>
   <h3>{{p.schedule}}</h3>
   <button (click)="edit(p._id)" >Editar</button>
-  
+  <button (click)="delite(p._id)" >Eliminar</button>
 </section>
 <button (click)="regresar()">regresar</button>

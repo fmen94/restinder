@@ -6,11 +6,21 @@
 <h3 *ngIf="editado" >Tu perfil ha sido cambiado</h3>
 <h4>Nombre: </h4><input type="text" value="{{profile.username}}" [(ngModel)]="profile.username">
 <h4>correo: </h4><input type="text" value="{{profile.email}}" [(ngModel)]="profile.email">
+<div class="container">
+    <div class="form-group">
+       <input type="text" placeholder="Busca tu direccion" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search>
+    </div>
+</div>
+<button (click)="ubicacion()" >Obtener Ubicacion </button>
+<agm-map style="height: 300px" [latitude]="lat" [longitude]="lng" [zoom]="17" >
+<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
 <h4>Direccion: </h4><input type="text" value="{{profile.location.address}}" [(ngModel)]="profile.address">
 <h4>Edad: </h4><input type="text" value="{{profile.age}}"  [(ngModel)]="profile.age">
 <h4>Numero Telefonico: </h4><input type="text" value="{{profile.phoneNumber}}" [(ngModel)]="profile.phoneNumber">
-<h4>Experiencia: <h4><textarea type="text" value="{{profile.experience}}" [(ngModel)]="profile.experience"></textarea>
+<h4>Experiencia: </h4><textarea type="text" value="{{profile.experience}}" [(ngModel)]="profile.experience"></textarea>
 <button (click)="edit()">Editar</button>
 <button (click)="vacancies()">Ir a vacancies</button>
 <button (click)="myVacancies()" >Ver mis solicitudes</button>
+<button (click)="myInterviews()" >Mis entrevistas</button>
 

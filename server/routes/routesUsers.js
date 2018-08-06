@@ -4,6 +4,7 @@ const User = require('../models/User');
 const Vacancies=require('../models/ Vacancies')
 const Interview = require('../models/Interview')
 const Comments= require('../models/Comments')
+const Restaurant = require('../models/Restaurant')
 //archivos
 const multer = require('multer')
 const uploads = multer({dest: './public/images'})
@@ -98,7 +99,7 @@ router.post('/user/interview/:id',(req,res)=>{
 
 //edit interview
 
-router.put('/user/interviews/:id',(req,res)=>{
+router.put('/user/interview/:id',(req,res)=>{
     Interview.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(interview=>{
         res.status(202).json(interview)
@@ -109,8 +110,8 @@ router.put('/user/interviews/:id',(req,res)=>{
 })
 
 //interview of user
-router.get('/user/interviews/:id',(req,res)=>{
-    Interview.find({user:req.params.id}).populate('restaurant')
+router.get('/user/interview/:id',(req,res)=>{
+    Interview.find({user:req.params.id}).populate('restaurant').populate('vacancies')
     .then(interview=>{
         res.status(200).json(interview)
     })
@@ -120,7 +121,7 @@ router.get('/user/interviews/:id',(req,res)=>{
 });
 //remove inteeview
 
-router.delete('/user/interviews/:id', (req, res, next) => {
+router.delete('/user/interview/:id', (req, res, next) => {
     Interview.findByIdAndRemove(req.params.id)
         .then(interview => {
             res.status(200).json(interview)
@@ -176,6 +177,20 @@ router.get('/user/comments/:id',(req,res)=>{
     .catch(err=>{
         res.status(404).json(err)
     })
+});
+
+//get restaurant
+
+router.get('/user/restaurant/:id', (req, res) => {
+    Restaurant.findById(req.params.id)
+        .then(restaurant => {
+
+            //if (!user) return res.status(404)
+            return res.status(200).json(restaurant);
+        })
+        .catch(err => {
+            return res.status(500).json(err);
+        });
 });
 
 

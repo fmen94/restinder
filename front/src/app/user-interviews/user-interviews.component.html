@@ -1,0 +1,30 @@
+<h2>Entrevistas solicitadas</h2>
+<h2 *ngIf="del" style="color:red;" >Tu Entrevista fue eliminada</h2>
+<div *ngFor="let p of interviews" >
+  <h3 *ngIf="edi==p._id" style="color:red;" >Te Entrevita ha sido editda</h3>
+  <h3>Restaurante: {{p.restaurant.username}}</h3>
+  <h4>Puesto: {{p.vacancies.position}}</h4>
+  <h4>Salario: {{p.vacancies.salary}}</h4>
+
+<div *ngIf="!ed" >
+  <h3>Datos de la Entrevita</h3>
+  <h3>Fecha: {{p.date[0]}}{{p.date[1]}}{{p.date[2]}}{{p.date[3]}}{{p.date[4]}}{{p.date[5]}}{{p.date[6]}}{{p.date[7]}}{{p.date[8]}}{{p.date[9]}}</h3>
+    <h3>hora: {{p.hour}}</h3>
+</div>
+<div *ngIf="ed==p._id" >
+    <h3>Datos de la Entrevita</h3>
+    <h3>Fecha: </h3>
+    <input  value="{p.date}}" [(ngModel)]="date" type="date">
+      <h3>hora: </h3>
+      <input type="datetime"   value="{{p.hour}}" [(ngModel)]="hour" >
+      <button (click)="editsend(p._id)" >Editar</button>
+  </div>
+<button  *ngIf="!ed" (click)="edit(p._id)" >Editar</button>
+<button (click)="remove(p._id)" >Eliminar</button>
+
+
+
+
+
+</div>
+<button (click)="return()" >Regresar</button>

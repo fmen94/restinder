@@ -10,6 +10,7 @@ import {UserService} from './../services/user.service'
 export class MyVacancesComponent implements OnInit {
   vacances: any
   user: any
+  del= false
   constructor(
     private router: Router,
     private userService: UserService
@@ -19,8 +20,11 @@ export class MyVacancesComponent implements OnInit {
     p.applicants.splice(index, 1);
     this.userService.deliteVcancies(p)
     .subscribe(res=>{
-      this.router.navigate(['userProfile'])
-      console.log(res)
+      this.userService.myVacancies(this.user._id)
+    .subscribe(res=>{
+      this.vacances=res
+      this.del= p._id
+    })
     })
   }
 

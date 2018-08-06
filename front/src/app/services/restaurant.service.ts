@@ -42,7 +42,7 @@ export class RestaurantService {
   }
 
   removeVacancies(id): Observable<string>{
-    return this.http.delete(this.url + '/restaurant/onevacancies/'+id)
+    return this.http.delete(this.url + '/restaurant/onevacancie/'+id)
     .pipe(map(res=>res.json()))
   }
 

@@ -25,9 +25,8 @@ export class VacanciesComponent implements OnInit {
     })
     
   }
-  restaurant(p){
-    //ir al restaurante!!!!
-    console.log(p)
+  restaurant(id){
+    this.router.navigate(['userrestaurant',id])
   }
   regresar(){
     this.router.navigate(['userProfile'])

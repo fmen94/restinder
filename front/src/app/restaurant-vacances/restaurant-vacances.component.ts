@@ -10,6 +10,7 @@ import {RestaurantService} from './../services/restaurant.service'
 export class RestaurantVacancesComponent implements OnInit {
   vacances: any
   user: any
+  del=false
   constructor(
     private router: Router,
     private restaurantService: RestaurantService
@@ -19,6 +20,20 @@ export class RestaurantVacancesComponent implements OnInit {
   }
   newVac(){
     this.router.navigate(['newvacance'])
+  }
+
+  delite(id){
+    this.restaurantService.removeVacancies(id)
+    .subscribe(res=>{
+      this.del=true
+      console.log(res)
+      this.restaurantService.getVacancies(this.user._id)
+      .subscribe(res=>{
+        this.vacances=res
+        console.log(this.vacances)
+  })
+      
+    })
   }
 
   edit(id){
