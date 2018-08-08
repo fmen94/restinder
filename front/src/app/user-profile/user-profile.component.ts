@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router'
 import {UserService} from './../services/user.service'
 import { MapsAPILoader } from '@agm/core';
@@ -12,11 +12,12 @@ import { ViewChild, ElementRef, NgZone } from '@angular/core';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  location={}
-  profile: any
+  location: any= {}
+  profile: any = {}
   editado= false
-  lat: any;
-  lng: any;
+  lat: any = 0;
+  lng: any = 0;
+  map= false
   @ViewChild('search') public searchElement: ElementRef;
 
   constructor(
@@ -27,13 +28,14 @@ export class UserProfileComponent implements OnInit {
   ) { }
 
   ubicacion(){
-    navigator.geolocation.getCurrentPosition(this.localizacion,this.error)
+    navigator.geolocation.getCurrentPosition(this.localizacion.bind(this),this.error)
   }
   localizacion(posicion){
-    console.log(posicion.coords.latitude);
-    console.log(posicion.coords.longitude);
-     this.lat= posicion.coords.latitude;
-     this.lng= posicion.coords.longitude;
+    this.map=true
+    this.lat= posicion.coords.latitude;
+    this.lng= posicion.coords.longitude;
+    this.profile.location.coordinates[1]=this.lat
+    this.profile.location.coordinates[0]=this.lng
   }
   
   
@@ -43,7 +45,9 @@ export class UserProfileComponent implements OnInit {
   }
 
 
-
+  maps(){
+    this.map=true
+  }
 
 
   edit(){
@@ -72,9 +76,12 @@ export class UserProfileComponent implements OnInit {
         
         autocomplete.addListener("place_changed", () => {
           this.ngZone.run(() => {
+                
             let place: google.maps.places.PlaceResult = autocomplete.getPlace();
             this.lat=  place.geometry.location.lat()
             this.lng= place.geometry.location.lng()
+            this.profile.location.coordinates[1]=this.lat
+            this.profile.location.coordinates[0]=this.lng
               if(place.geometry === undefined || place.geometry === null ){
                 return;}
           });
@@ -88,6 +95,8 @@ export class UserProfileComponent implements OnInit {
     user=JSON.parse(user)
     console.log(user)
     this.profile= user
+    this.lat=this.profile.location.coordinates[1]
+    this.lng=this.profile.location.coordinates[0]
     
 
   }}

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router'
 import {RestaurantService} from './../services/restaurant.service'
+import { MapsAPILoader } from '@agm/core';
+import {} from '@types/googlemaps';
+import { ViewChild, ElementRef, NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-restaurant-vacances',
@@ -8,8 +11,8 @@ import {RestaurantService} from './../services/restaurant.service'
   styleUrls: ['./restaurant-vacances.component.css']
 })
 export class RestaurantVacancesComponent implements OnInit {
-  vacances: any
-  user: any
+  vacances: any ={}
+  user: any={}
   del=false
   constructor(
     private router: Router,

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router'
 import {UserService} from './../services/user.service'
-
+import { MapsAPILoader } from '@agm/core';
+import {} from '@types/googlemaps';
 
 @Component({
   selector: 'app-vacancies',

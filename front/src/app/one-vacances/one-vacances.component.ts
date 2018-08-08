@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router'
 import {RestaurantService} from './../services/restaurant.service'
-import { Title } from '@angular/platform-browser';
+import {} from '@types/googlemaps';
 
 
 @Component({
@@ -10,16 +10,16 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./one-vacances.component.css']
 })
 export class OneVacancesComponent implements OnInit {
-  vancant: any
-  id: any
-  title: any
-  position: any
-  salary: any
-  schedule: any
-  description: any
-  applicants : any
+  vancant: any={}
+  id: any 
+  title: any = ""
+  position: any =""
+  salary: any = ""
+  schedule: any =""
+  description: any =""
+  applicants : any = []
   editado = false
-  user: any
+  user: any ={}
 
   constructor(
     private  activeRoute :  ActivatedRoute ,
@@ -55,6 +55,7 @@ export class OneVacancesComponent implements OnInit {
     this.id=params})
     this.restaurantService.oneVacancies(this.id.id)
     .subscribe(res=>{
+      console.log(res)
       this.vancant=res
       this.position= this.vancant.position
       this.salary= this.vancant.salary

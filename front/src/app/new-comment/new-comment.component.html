@@ -1,15 +1,32 @@
 <section>
   <div>
 
-    <h2>Nueva Comentario</h2>
-    <h3 *ngIf="comentado" style="color: red" >Tu comentario fue entregado</h3>
-    <h3>Solicitante: {{user.username}}</h3>
-    <h4>Titulo</h4>
-    <input [(ngModel)]="title" type="text" required>
-    <h4>Comentario</h4>
-    <textarea [(ngModel)]="text" type="text" ></textarea>
-   
-   <button (click)="newcomment()" >Comentar</button>
+ 
+
+<div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://safety4sea.com/wp-content/uploads/2016/12/comments-concept-image.jpg">
+        </div>
+        <div class="card-content">
+            <h2>Nueva Comentario</h2>
+            <h3 *ngIf="comentado" style="color: red" >Tu comentario fue entregado</h3>
+            <h3>Solicitante: {{user.username}}</h3>
+            <h4>Titulo</h4>
+            <input [(ngModel)]="title" type="text" required>
+            <h4>Comentario</h4>
+            <textarea [(ngModel)]="text" type="text" ></textarea>
+        </div>
+        <div class="card-action">
+            <button class="btn waves-effect waves-light" (click)="newcomment()">Comentar
+                <i class="material-icons right"></i>
+            </button> 
+            <button class="btn waves-effect waves-light" (click)="return()">Regresar
+                <i class="material-icons right"></i>
+            </button>
+        </div>
+      </div>
+    </div>
   </div>
-  <button (click)="return()" >Regresar</button>
-</section>
+

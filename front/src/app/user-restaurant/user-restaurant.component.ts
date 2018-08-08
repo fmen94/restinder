@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router'
 import {UserService} from './../services/user.service'
+import {} from '@types/googlemaps';
 
 @Component({
   selector: 'app-user-restaurant',

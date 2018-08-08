@@ -1,13 +1,41 @@
-<h1>My vacancies</h1>
-<h2 *ngIf="del" style="color: red" >Tu solicitud Fue canselada</h2>
+<div class="col s12 m2">
+                <h2 class="z-depth-5 center"> Mis vacantes</h2>
+</div>
+
+<button  class="btn waves-effect waves-light"  (click)="regresar()">regresar <i class="material-icons right"></i> </button>
+<h2 *ngIf="del" style="color: red" >Tu solicitud fue canselada</h2>
 <section *ngFor="let p of vacances" >
-  <h2>Titulo: {{p.title}}</h2>
-  <img src="{{p.restaurant.photoURL}}" alt="">
-  <h3>Puresto: {{p.position}}</h3>
-  <h3>Salario: {{p.salary}}</h3>
-  <h3>Descripcion: {{p.description}}</h3>
-  <h3>Horario: {{p.schedule}}</h3>
-  <button (click)="noSolicitar(p)" >Dejar de solicitar</button>
-  <button (click)="comment(p.restaurant._id)" >Comentar</button>
+    <div class="cont">
+<div class="center">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{p.restaurant.photoURL}}">
+          <span class="card-title">Titulo: {{p.title}}</span>
+        </div>
+        <div class="card-content">
+              <h3>Puresto: {{p.position}}</h3>
+              <h3>Salario: {{p.salary}}</h3>
+              <h3>Descripcion: {{p.description}}</h3>
+              <h3>Horario: {{p.schedule}}</h3>
+              <h3>Lugar:</h3>
+              <agm-map style="height: 300px" [latitude]="p.location.coordinates[1]" [longitude]="p.location.coordinates[0]" [zoom]="17" >
+                <agm-marker [latitude]="p.location.coordinates[1]" [longitude]="p.location.coordinates[0]"></agm-marker>
+              </agm-map>
+        </div>
+        <div class="card-action">
+            <div class="cont">
+            <button (click)="noSolicitar(p)" class="btn waves-effect waves-light" type="submit" name="action">
+                <i class="material-icons right">Dejar de solicitar</i>
+            </button>
+            <button (click)="comment(p.restaurant._id)" class="btn waves-effect waves-light" type="submit" name="action">
+                  <i class="material-icons right">Comentar</i>
+             </button>
+                       
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 </section>
-<button (click)="regresar()">regresar</button>

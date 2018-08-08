@@ -1,30 +1,52 @@
-<h2>Entrevistas solicitadas</h2>
+
+<div class="col s12 m2">
+    <h2 class="z-depth-5 center">Entrevistas solicitadas</h2>
+</div>
+
+
+
+
+<button class="btn waves-effect waves-light" (click)="return()" >Regresar <i class="material-icons right"></i> </button>
 <h2 *ngIf="del" style="color:red;" >Tu Entrevista fue eliminada</h2>
 <div *ngFor="let p of interviews" >
-  <h3 *ngIf="edi==p._id" style="color:red;" >Te Entrevita ha sido editda</h3>
-  <h3>Restaurante: {{p.restaurant.username}}</h3>
-  <h4>Puesto: {{p.vacancies.position}}</h4>
-  <h4>Salario: {{p.vacancies.salary}}</h4>
-
-<div *ngIf="!ed" >
-  <h3>Datos de la Entrevita</h3>
-  <h3>Fecha: {{p.date[0]}}{{p.date[1]}}{{p.date[2]}}{{p.date[3]}}{{p.date[4]}}{{p.date[5]}}{{p.date[6]}}{{p.date[7]}}{{p.date[8]}}{{p.date[9]}}</h3>
-    <h3>hora: {{p.hour}}</h3>
-</div>
-<div *ngIf="ed==p._id" >
-    <h3>Datos de la Entrevita</h3>
-    <h3>Fecha: </h3>
-    <input  value="{p.date}}" [(ngModel)]="date" type="date">
-      <h3>hora: </h3>
-      <input type="datetime"   value="{{p.hour}}" [(ngModel)]="hour" >
-      <button (click)="editsend(p._id)" >Editar</button>
+<div class="cont">
+<div class="center">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-content">
+            <h3 *ngIf="edi==p._id" style="color:red;" >Te Entrevista ha sido editda</h3>
+            <h3>Restaurante: {{p.restaurant.username}}</h3>
+            <h4>Puesto: {{p.vacancies.position}}</h4>
+            <h4>Salario: {{p.vacancies.salary}}</h4>
+    
+          <div *ngIf="!ed" >
+            <h3>Datos de la Entrevita</h3>
+            <h3>Fecha: {{p.date[0]}}{{p.date[1]}}{{p.date[2]}}{{p.date[3]}}{{p.date[4]}}{{p.date[5]}}{{p.date[6]}}{{p.date[7]}}{{p.date[8]}}{{p.date[9]}}</h3>
+              <h3>hora: {{p.hour}}</h3>
+          </div>
+          <h3>Lugar:</h3>
+            <agm-map style="height: 300px" [latitude]="p.location.coordinates[1]" [longitude]="p.location.coordinates[0]" [zoom]="17" >
+              <agm-marker [latitude]="p.location.coordinates[1]" [longitude]="p.location.coordinates[0]"></agm-marker>
+            </agm-map>
+          <div *ngIf="ed==p._id" >
+              <h3>Datos de la Entrevita</h3>
+              <h3>Fecha: </h3>
+              <input  value="{p.date}}" [(ngModel)]="date" type="date">
+                <h3>hora: </h3>
+                <input type="datetime"   value="{{p.hour}}" [(ngModel)]="hour" >
+                <button class="btn waves-effect waves-light" (click)="editsend(p._id)" >Editar <i class="material-icons right"></i> </button>
+            </div>
+    
+          
+        </div>
+        <div class="card-action">
+            <div class="cont">
+            <button class="btn waves-effect waves-light"  *ngIf="!ed" (click)="edit(p._id)" >Editar <i class="material-icons right"></i> </button>
+            <button class="btn waves-effect waves-light" (click)="remove(p._id)" >Eliminar <i class="material-icons right"></i> </button>
+        </div>
+          </div>
+      </div>
+    </div>
   </div>
-<button  *ngIf="!ed" (click)="edit(p._id)" >Editar</button>
-<button (click)="remove(p._id)" >Eliminar</button>
-
-
-
-
-
 </div>
-<button (click)="return()" >Regresar</button>
+</div>

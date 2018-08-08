@@ -1,10 +1,32 @@
-<section>
-  <div>
-    <h2>Iniciar Sesion</h2>
-    <input placeholder="Ingrese su email" [(ngModel)]="auth.email" type="text" required>
-    <br>
-    <input placeholder="Ingrese su password" [(ngModel)]="auth.password"  type="password" required>
-    <button (click)="login()">Registrarse</button>
-    <p>No tienes cuenta? <span (click)="redirectSignup()" >Click aquí</span></p>
+
+
+
+<div class="cont">
+<div class="center">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://torrecatalunya.com/wp-content/uploads/2014/12/Visual-Eje-__H81.jpg">
+          <span class="card-title">Iniciar Sesion</span>
+        </div>
+        <div class="card-content">
+            <input placeholder="Ingrese su email" [(ngModel)]="auth.email" type="text" required>
+            <br>
+            <input placeholder="Ingrese su password" [(ngModel)]="auth.password"  type="password" required>
+            <button  class="btn waves-effect waves-light"  (click)="login()">Registrarse<i class="material-icons right"></i></button>
+           
+        </div>
+        <div class="card-action">
+            <p>No tienes cuenta?  <a (click)="redirectSignup()" >Click aquí</a></p>
+         
+          <h4>
+              Entra con Facebook <button  class="btn waves-effect waves-light"  (click)="loginWithFacebook()" >Facebook Login<i class="material-icons right"></i></button>
+            </h4>
+            <h4>
+              Entra con Google <button  class="btn waves-effect waves-light"  (click)="loginWithGoogle()" >Google Login<i class="material-icons right"></i></button>
+            </h4>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
+</div>

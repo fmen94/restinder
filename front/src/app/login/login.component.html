@@ -1,11 +1,26 @@
-<section>
-    <div>
-      <h2>Iniciar Sesion</h2>
-      <input placeholder="Ingrese su email" [(ngModel)]="auth.email" type="text" required>
-      <br>
-      <input placeholder="Ingrese su password" [(ngModel)]="auth.password"  type="password" required>
-      <button (click)="login()">Registrarse</button>
-      <p>No tienes cuenta? <span (click)="redirectSignup()" >Click aquí</span></p>
-    </div>
-</section>
+
+
+<div class="cont">
+    <div class="center">
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://torrecatalunya.com/wp-content/uploads/2014/12/Visual-Eje-__H81.jpg">
+              <span class="card-title"><h2>Login</h2></span>
+            </div>
+            <div class="card-content">
+                <input placeholder="Ingrese su email" [(ngModel)]="auth.email" type="text" required>
+                  <br>
+                  <input placeholder="Ingrese su password" [(ngModel)]="auth.password"  type="password" required>
+            </div>
+            <div class="card-action">
+                <button (click)="login()" class="btn waves-effect waves-light" type="submit" name="action">Entrar
+                    <i class="material-icons right"></i>
+                  </button>
+                <p>No tienes cuenta? <a (click)="redirectSignup()" >Click aquí</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
   

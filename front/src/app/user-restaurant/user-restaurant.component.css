@@ -1,0 +1,6 @@
+.cont{
+    display: flex !important;
+justify-content: space-around !important;
+max-width: 90%;
+margin: 10%
+}

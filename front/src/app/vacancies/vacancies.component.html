@@ -1,17 +1,52 @@
-<h1>vacancies</h1>
-<section *ngFor="let p of vacances" >
+<div>
+        <div class="col s12 m2">
+                <h2 class="z-depth-5 center">Vacantes</h2>
+        </div>
+        
+   
+    <button (click)="regresar()" class="btn waves-effect waves-light">
+        <i class="material-icons right">regresar</i>
+    </button>
+</div>
 
- 
-  <h2>Titulo: {{p.title}}</h2>
-  <h3>Puesto: {{p.position}}</h3>
-  <img src="{{p.restaurant.photoURL}}" alt="{{p.restaurant.photoURL}}">
-  <h3>Restaurante: {{p.restaurant.username}}</h3>
-  <h3>Email: {{p.restaurant.email}}</h3>
-  
-  <h3>Salario: {{p.salary}}</h3>
-  <h3>Descripcion: {{p.description}}</h3>
-  <h3>Horario: {{p.schedule}}</h3>
-  <button (click)="solicitar(p)" >Solicitar</button>
-  <button (click)="restaurant(p.restaurant._id)" >Ver restaurante</button>
+<section *ngFor="let p of vacances" >
+        <div class="cont">
+  <div class="center">
+      <div class="col s12 m7">
+        <div class="card">
+          <div class="card-image">
+            <img src="{{p.restaurant.photoURL}}">
+            <span class="card-title">{{p.title}}</span>
+          </div>
+          <div class="card-content">
+              <h3>Puesto: {{p.position}}</h3>
+              <h3>Restaurante: {{p.restaurant.username}}</h3>
+              <h3>Email: {{p.restaurant.email}}</h3>
+              <h3>Salario: {{p.salary}}</h3>
+              <h3>Descripcion: {{p.description}}</h3>
+              <h3>Horario: {{p.schedule}}</h3>
+              <h3>Lugar:</h3>
+              <agm-map style="height: 300px" [latitude]="p.location.coordinates[1]" [longitude]="p.location.coordinates[0]" [zoom]="17" >
+                <agm-marker [latitude]="p.location.coordinates[1]" [longitude]="p.location.coordinates[0]"></agm-marker>
+              </agm-map>
+          </div>
+          <div class="card-action">
+           
+            <div class="cont">
+                <button (click)="solicitar(p)" class="btn waves-effect waves-light">Solicitar
+                    <i class="material-icons right"></i>
+                </button>
+                <br>
+                <button (click)="restaurant(p.restaurant._id)" class="btn waves-effect waves-light" >Ver restaurante
+                    <i class="material-icons right"></i>
+                </button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
 </section>
-<button (click)="regresar()">regresar</button>
+

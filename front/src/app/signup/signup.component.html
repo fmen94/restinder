@@ -1,15 +1,29 @@
 
 
-<section>
-  <div>
-    <h2>Registrate</h2>
-    <input [(ngModel)]="auth.username" placeholder="Ingrese su username" type="text" required>
-    <input placeholder="Ingrese su email" [(ngModel)]="auth.email" type="email" required>
-    <br>
-    <p *ngIf="auth.password!= auth.password2" style="color: red">Tu contraseña no coicide</p>
-    <input placeholder="Ingrese su password" [(ngModel)]="auth.password"  type="password" required>
-    <input placeholder="Ingrese su password" [(ngModel)]="auth.password2"  type="password" required>
-    <button (click)="signup()">Registrarse</button>
-    <p>Ya tienes cuenta? <span (click)="redirectLogin()" >Click aquí</span></p>
-  </div>
-</section>
+
+<div class="cont">
+    <div class="center">
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://torrecatalunya.com/wp-content/uploads/2014/12/Visual-Eje-__H81.jpg">
+              <span class="card-title"><h2>Registrate</h2></span>
+            </div>
+            <div class="card-content">
+                <input [(ngModel)]="auth.username" placeholder="Ingrese su username" type="text" required>
+                <input placeholder="Ingrese su email" [(ngModel)]="auth.email" type="email" required>
+                <br>
+                <p *ngIf="auth.password!= auth.password2" style="color: red">Tu contraseña no coicide</p>
+                <input placeholder="Ingrese su password" [(ngModel)]="auth.password"  type="password" required>
+                <input placeholder="Repita su su password" [(ngModel)]="auth.password2"  type="password" required>
+            </div>
+            <div class="card-action">
+                <button (click)="signup()" class="btn waves-effect waves-light" type="submit" name="action">Registrarse
+                    <i class="material-icons right"></i>
+                  </button>
+                <p>Ya tienes cuenta? <a (click)="redirectLogin()" >Click aquí</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

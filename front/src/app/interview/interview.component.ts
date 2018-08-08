@@ -13,6 +13,7 @@ export class InterviewComponent implements OnInit {
   date: any
   hour: any
   request: any
+  restaurant: any
   constructor(
     private  activeRoute :  ActivatedRoute ,
     private router: Router,
@@ -20,7 +21,12 @@ export class InterviewComponent implements OnInit {
   ) { }
   solicitar(){
     this.request={
-      date:this.date, hour:this.hour,user:this.user._id,restaurant: this.interview.restaurant,vacancies: this.interview.vacancies             
+      date:this.date,
+       hour:this.hour,
+       user:this.user._id,
+       restaurant: this.interview.restaurant,
+       vacancies: this.interview.vacancies,
+       location:{coordinates:[this.restaurant.location.coordinates[0],this.restaurant.location.coordinates[1]]}    
     }
    this.userService.newInterview(this.request)
    .subscribe(res=>
@@ -33,6 +39,10 @@ export class InterviewComponent implements OnInit {
     
     this.activeRoute.params.subscribe( params => {
     this.interview=params})
+    this.userService.getRestaurant(this.interview.restaurant)
+    .subscribe(res=>{
+      this.restaurant=res
+    })
   }
 
 }

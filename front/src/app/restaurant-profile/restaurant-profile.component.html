@@ -1,17 +1,43 @@
-<h2> Restaurante: {{user.username}}</h2>
 
-<h3>Tus datos:</h3>
-<img [src]="user.photoURL" alt="">
-<br>
-<h3 *ngIf="editado" >Tu perfil ha sido cambiado</h3>
-<h4>Nombre: </h4><input type="text"  value="{{user.username}}" [(ngModel)]="user.username">
-<h4>correo: </h4><input type="text" value="{{user.email}}" [(ngModel)]="user.email">
-<h4>Direccion: </h4><input type="text" value="{{user.location.address}}" [(ngModel)]="user.location.address">
-<h4>Telefono: </h4><input type="text" value="{{user.phoneNumber}}"  [(ngModel)]="user.phoneNumber">
-<h4>Estilo: </h4><input type="text" value="{{user.style}}"  [(ngModel)]="user.style">
-<h4>Descripcion: </h4><textarea type="text" value="{{user.descripcion}}" [(ngModel)]="user.descripcion"></textarea>
+<div class="cont">
+ <div class="center">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img [src]="user.photoURL" >
+          <span class="card-title"><h2>Restaurante: {{user.username}}</h2></span>
+        </div>
+        <div class="card-content">
+            <h3>Tus datos:</h3>
+            <h3 *ngIf="editado" >Tu perfil ha sido cambiado</h3>
+            <h4>Nombre: </h4><input type="text"  value="{{user.username}}" [(ngModel)]="user.username">
+            <h4>correo: </h4><input type="text" value="{{user.email}}" [(ngModel)]="user.email">
 
- <button (click)="edit()">Editar</button>
- <button (click)="vacancies()">Mis vacancies</button>
- <button (click)="comentarios()">Ir a comentarios</button>
- <button (click)="interviews()">Entrvistas</button>
+            <h4>Direccion: </h4>
+            <div class="container">
+                <div class="form-group">
+                <input type="text" (click)="maps()" placeholder="Busca tu direccion" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" (click)="ubicacion()" >Obtener Ubicacion <i class="material-icons right"></i></button>
+            <div *ngIf="map || lat !=0">
+                <agm-map style="height: 300px" [latitude]="lat" [longitude]="lng" [zoom]="17" >
+                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                </agm-map>
+            </div>
+            <h4>Telefono: </h4><input type="text" value="{{user.phoneNumber}}"  [(ngModel)]="user.phoneNumber">
+            <h4>Estilo: </h4><input type="text" value="{{user.style}}"  [(ngModel)]="user.style">
+            <h4>Descripcion: </h4>
+            <textarea type="text" value="{{user.descripcion}}" [(ngModel)]="user.descripcion"></textarea>
+
+        </div>
+        <div class="card-action">
+          <a (click)="edit()">Editar</a>
+          <a (click)="vacancies()">Mis vacancies</a>
+          <a (click)="comentarios()">Ir a comentarios</a>
+          <a (click)="interviews()">Entrvistas</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

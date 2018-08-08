@@ -1,20 +1,32 @@
 
-
-<h3> Datos de {{restaurant.username}} </h3>
-<img [src]="restaurant.photoURL" alt="">
-<br>
-<h4>Nombre: </h4>
-<h3>{{restaurant.username}}</h3>
-<h4>Correo: </h4>
-<h3>{{restaurant.email}}</h3>
-<h4>Direccion: </h4>
-<h3>{{restaurant.location.address}}</h3>
-<h4>Telefono: </h4>
-<h3>{{restaurant.phoneNumber}}</h3>
-<h4>Estilo: </h4>
-<h3>{{restaurant.style}}</h3>
-<h4>Descripcion: </h4>
-<h3>{{restaurant.descripcion}}</h3>
-
- <button (click)="return()">Regresar</button>
- 
+<div class="cont" >
+ <div class="center">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img [src]="restaurant.photoURL">
+          <span class="card-title">Card Title</span>
+        </div>
+        <div class="card-content">
+            <h4>Nombre: </h4>
+            <h3>{{restaurant.username}}</h3>
+            <h4>Correo: </h4>
+            <h3>{{restaurant.email}}</h3>
+            <h4>Telefono: </h4>
+            <h3>{{restaurant.phoneNumber}}</h3>
+            <h4>Estilo: </h4>
+            <h3>{{restaurant.style}}</h3>
+            <h4>Descripcion: </h4>
+            <p>{{restaurant.descripcion}}</p>
+            <h4>Direccion: </h4>
+            <agm-map style="height: 300px" [latitude]="restaurant.location.coordinates[1]" [longitude]="restaurant.location.coordinates[0]" [zoom]="17" >
+                <agm-marker [latitude]="restaurant.location.coordinates[1]" [longitude]="restaurant.location.coordinates[0]"></agm-marker>
+            </agm-map>
+        </div>
+        <div class="card-action">
+          <a (click)="return()" >Regresar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

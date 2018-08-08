@@ -1,0 +1,12 @@
+.cont{
+    display: flex !important;
+justify-content: space-around !important;
+max-width: 90%;
+margin: 10%
+}
+h3{
+    padding: 10px ,20px;
+    background-color: rgba(38, 166, 154, 50);
+    width: 100%;
+    text-align: center;
+}   

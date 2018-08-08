@@ -9,8 +9,8 @@ import { AuthService } from './../services/auth.service';
   styleUrls: ['./signup-restaurant.component.css']
 })
 export class SignupRestaurantComponent implements OnInit {
-  auth = {password:"",password2:""}
-  user = null
+  auth: any ={}
+  user: any ={}
   constructor(
     private router: Router,
     private authService: AuthService

@@ -1,0 +1,9 @@
+
+.cont{
+    display: flex !important;
+justify-content: center}
+
+
+textarea{
+    height: 150px;
+}

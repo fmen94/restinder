@@ -1,13 +1,38 @@
-<section>
-  <div>
-    <h2>Nueva Vacance</h2>
-    <h3 *ngIf="create" style="color: red">Tu Vacante fue creada</h3>
-    <h4>Titulo: </h4><input type="text" [(ngModel)]="title" >
-    <h4>Posicion: </h4><input type="text" [(ngModel)]="position" >
-    <h4>Salario: </h4><input type="text" [(ngModel)]="salary" >
-    <h4>Horario: </h4><input type="text"  [(ngModel)]="schedule" >
-    <h4>Descripcion: </h4><textarea type="text" [(ngModel)]="description" ></textarea>
-      <button (click)="send()">Crear</button>
-      <button (click)="regresar()">Regresar</button>
+
+
+<div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img [src]="user.photoURL">
+          <span class="card-title"><h2>Nueva Vacance</h2></span>
+        </div>
+        <div class="card-content">
+            
+            <h3 *ngIf="create" style="color: red">Tu Vacante fue creada</h3>
+            <h4>Titulo: </h4><input type="text" [(ngModel)]="title" >
+            <h4>Posicion: </h4><input type="text" [(ngModel)]="position" >
+            <h4>Salario: </h4><input type="text" [(ngModel)]="salary" >
+            <h4>Horario: </h4><input type="text"  [(ngModel)]="schedule" >
+            <h4>Descripcion: </h4><textarea type="text" [(ngModel)]="description" ></textarea>
+            <h4>Direccion: </h4>
+            <div class="container">
+            <div class="form-group">
+               <input type="text" (click)="maps()" placeholder="Busca tu direccion" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search>
+            </div>
+          </div>
+        <button (click)="ubicacion()" >Obtener Ubicacion </button>
+        <div *ngIf="map || lat !=0">
+            <agm-map style="height: 300px" [latitude]="lat" [longitude]="lng" [zoom]="17" >
+                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-map>
+        </div>
+        <div class="card-action">
+            <button button class="btn waves-effect waves-light" (click)="send()">Crear<i class="material-icons right"></i></button>
+            <button button class="btn waves-effect waves-light" (click)="regresar()">Regresar<i class="material-icons right"></i></button>
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
+            

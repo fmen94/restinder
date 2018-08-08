@@ -12,7 +12,7 @@ import {Router} from '@angular/router'
 export class SignupComponent implements OnInit {
   passwordOk=false
   isLogged = true
-  auth = {password:"",password2:""}
+  auth: any = {}
   user = null
 
   constructor(

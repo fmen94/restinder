@@ -1,12 +1,43 @@
-<nav>
-    <a [routerLink]="['home']"> Home </a>
-    |
-    <a [routerLink]="['products']"> Produtos </a>
-    |
-    <a [routerLink]="['signup']"> Signup </a>
-    |
-    <a href="#!" (click)="logout()" > Logout </a>
-</nav>
+<div *ngIf="selec" >
+        <nav>
+              <div class="nav-wrapper">
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li><a (click)="use()" >Ususario</a></li>
+                        <li><a (click)="rest()" >Restaursnte</a></li>
+                </ul>
+            </div>
+       </nav>
+  </div>
 
-<button [routerLink]="['signupRestaurant']" >Restaurante</button>
-<router-outlet></router-outlet>
+
+<div *ngIf="res" >
+        <nav>
+              <div class="nav-wrapper">
+                <a  class="brand-logo right">Restaurante</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                  <li><a [routerLink]="['signupRestaurant']" >Signup</a></li>
+                  <li><a [routerLink]="['restaurantlogin']" >Login</a></li>
+                  <li><a (click)="logout()" >Logout</a></li>
+                  <li><a (click)="use()" >Soy Ususario</a></li>
+                </ul>
+              </div>
+       </nav>
+  </div>
+     <div *ngIf="user" >
+            <nav>
+                  <div class="nav-wrapper"> 
+                    <a  class="brand-logo right">Ususario</a>
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                      <li><a [routerLink]="['signup']" >Signup</a></li>
+                      <li><a [routerLink]="['login']" >Login</a></li>
+                      <li><a (click)="logout()" >Logout</a></li>
+                      <li><a (click)="rest()" >Soy Restaurante</a></li>
+                    </ul>
+                  </div>
+           </nav>
+      </div>
+      <section>
+          <router-outlet></router-outlet>
+      </section>
+
+      <router-outlet></router-outlet>

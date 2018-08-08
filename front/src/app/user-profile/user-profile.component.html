@@ -1,26 +1,43 @@
-<h2> Bienbenido {{profile.username}}</h2>
 
-<h3>Tus datos:</h3>
-<img src="{{profile.photoURL}}" alt="{{profile.photoURL}}">
-<br>
-<h3 *ngIf="editado" >Tu perfil ha sido cambiado</h3>
-<h4>Nombre: </h4><input type="text" value="{{profile.username}}" [(ngModel)]="profile.username">
-<h4>correo: </h4><input type="text" value="{{profile.email}}" [(ngModel)]="profile.email">
-<div class="container">
-    <div class="form-group">
-       <input type="text" placeholder="Busca tu direccion" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search>
+<div class="cont">
+        <div class="center">
+            <div class="col s12 m7">
+              <div class="card hoverable">
+                <div class="card-image">
+                  <img src="{{profile.photoURL}}">
+                  <span class="card-title"></span>
+                </div>
+                <div class="card-content">
+                 <h2> Bienvenido {{profile.username}}</h2>
+                 <h3>Tus datos:</h3>
+                    <h3 *ngIf="editado" >Tu perfil ha sido cambiado</h3>
+                    <h4>Nombre: </h4><input type="text" value="{{profile.username}}" [(ngModel)]="profile.username">
+                    <h4>correo: </h4><input type="text" value="{{profile.email}}" [(ngModel)]="profile.email">
+                    <h4>Direccion: </h4>
+                    <div class="container">
+                        <div class="form-group">
+                            <input type="text" (click)="maps()" placeholder="Busca tu direccion" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search>
+                        </div>
+                    </div>
+                    <button (click)="ubicacion()" class="btn waves-effect waves-light" type="submit" name="action">Obtener Ubicacion 
+                            <i class="material-icons right"></i>
+                    </button>
+                    <div *ngIf="map || lat != 0">
+                        <agm-map style="height: 300px" [latitude]="lat" [longitude]="lng" [zoom]="17" >
+                            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                        </agm-map>
+                    </div>
+                    <h4>Edad: </h4><input type="text" value="{{profile.age}}"  [(ngModel)]="profile.age">
+                    <h4>Numero Telefonico: </h4><input type="text" value="{{profile.phoneNumber}}" [(ngModel)]="profile.phoneNumber">
+                    <h4>Experiencia: </h4><textarea type="text" value="{{profile.experience}}" [(ngModel)]="profile.experience"></textarea>
+                </div>
+                <div class="card-action">
+                    <a (click)="edit()" >Editar</a>
+                    <a (click)="vacancies()" >Ir a Vacantes</a><br>
+                    <a (click)="myVacancies()" >Ver mis solicitudes</a>
+                    <a (click)="myInterviews()" >Mis entrevistas</a>
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
-</div>
-<button (click)="ubicacion()" >Obtener Ubicacion </button>
-<agm-map style="height: 300px" [latitude]="lat" [longitude]="lng" [zoom]="17" >
-<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-</agm-map>
-<h4>Direccion: </h4><input type="text" value="{{profile.location.address}}" [(ngModel)]="profile.address">
-<h4>Edad: </h4><input type="text" value="{{profile.age}}"  [(ngModel)]="profile.age">
-<h4>Numero Telefonico: </h4><input type="text" value="{{profile.phoneNumber}}" [(ngModel)]="profile.phoneNumber">
-<h4>Experiencia: </h4><textarea type="text" value="{{profile.experience}}" [(ngModel)]="profile.experience"></textarea>
-<button (click)="edit()">Editar</button>
-<button (click)="vacancies()">Ir a vacancies</button>
-<button (click)="myVacancies()" >Ver mis solicitudes</button>
-<button (click)="myInterviews()" >Mis entrevistas</button>
-
