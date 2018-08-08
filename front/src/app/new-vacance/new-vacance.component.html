@@ -21,7 +21,8 @@
                <input type="text" (click)="maps()" placeholder="Busca tu direccion" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search>
             </div>
           </div>
-        <button (click)="ubicacion()" >Obtener Ubicacion </button>
+          <button button class="btn waves-effect waves-light" (click)="ubicacion()">Obtener Ubicacion <i class="material-icons right"></i></button>
+      
         <div *ngIf="map || lat !=0">
             <agm-map style="height: 300px" [latitude]="lat" [longitude]="lng" [zoom]="17" >
                 <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
@@ -30,7 +31,7 @@
         <div class="card-action">
             <button button class="btn waves-effect waves-light" (click)="send()">Crear<i class="material-icons right"></i></button>
             <button button class="btn waves-effect waves-light" (click)="regresar()">Regresar<i class="material-icons right"></i></button>
-          <a href="#">This is a link</a>
+          
         </div>
       </div>
     </div>

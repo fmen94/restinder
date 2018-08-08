@@ -9,6 +9,15 @@ const vacanciesSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Restaurant'
     },
+    location:{
+        type:{
+            type:String,
+            default:'Point'
+        },
+        address:String,
+        coordinates:[{
+            type:Number
+        }]},
     salary: String,
     schedule: String,
     description: String,

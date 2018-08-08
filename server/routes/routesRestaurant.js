@@ -84,7 +84,7 @@ router.post ('/restaurant/vacancies/:id',(req,res,next)=>{
 //show vacancies
 
 router.get('/restaurant/vacancies/:id', (req, res) => {
-    Vacancies.find({restaurant: req.params.id})
+    Vacancies.find({restaurant: req.params.id}).populate('restaurant').sort({updated_at:-1})
         .then(vacancies => {
 
             //if (!user) return res.status(404)
@@ -138,7 +138,7 @@ router.delete('/restaurant/onevacancie/:id', (req, res, next) => {
 //users applicants
 
 router.post('/restaurant/vacanciess/applicants/:id',(req,res,next)=>{
-    Vacancies.find({restaurant:req.params.id}).populate('applicants')
+    Vacancies.find({restaurant:req.params.id}).populate('applicants').sort({updated_at:-1})
     .then(vacancies=>{
         res.status(200).json(vacancies)
         console.log("entramos al then",vacancies)
@@ -150,7 +150,7 @@ router.post('/restaurant/vacanciess/applicants/:id',(req,res,next)=>{
 //coments of restaurants
 
 router.get('/restaurant/comments/:id',(req,res)=>{
-    Comment.find({restaurant:req.params.id}).populate('user')
+    Comment.find({restaurant:req.params.id}).populate('user').sort({updated_at:-1})
     .then(comment=>{
         res.status(200).json(comment)
     })
@@ -173,7 +173,8 @@ router.put('/restaurant/comments/:id',(req,res)=>{
 
 //Interview of vacances
 router.get('/restaurant/interview/:id',(req,res)=>{
-    Interview.find().populate('vacancies').populate('user')
+    console.log(req.param.id)
+    Interview.find({ "*" : req.param.id}).populate('vacancies').populate('user').sort({updated_at:-1})
     .then(vacancie=>{
         res.status(200).json(vacancie)
     })

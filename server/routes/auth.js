@@ -19,6 +19,10 @@ const upload = multer({dest: './public/assets'});
 
 //midelwares
 
+function authenticateFaceboock(req,res,next){
+    console.log(req.body)
+}
+
 function authenticate(req,res,next){
     passport.use(User.createStrategy());
     passport.serializeUser(User.serializeUser());
@@ -42,6 +46,11 @@ function isLoggedIn(req,res,next){
         next();
     }
 }
+router.post('/facebook/login',(req,res)=>{
+    console.log(req.body)
+    
+ })
+
 
 //signup of Users
 

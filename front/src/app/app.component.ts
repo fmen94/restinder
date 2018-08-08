@@ -30,6 +30,9 @@ export class AppComponent {
   logout(){
     localStorage.removeItem('user')
     this.routes.navigate([''])
+    this.user= false
+    this.selec=true
+    this.res=false
   }
 
 }

@@ -40,4 +40,49 @@
           <router-outlet></router-outlet>
       </section>
 
+      <section *ngIf="!user && !res" class="home" >
+          <i style="font-size: 200px;" class="material-icons top">room_service</i>
+        <h1>Restinder </h1>
+        <h3>Encuentra entrevistas a tu medida con los mejores restaurantes de México</h3>
+        <div class="row">
+
+            <div class="col s4">
+                <i style="font-size: 100px;" class="material-icons">assignment_ind</i>
+                <h4>Fácil Registro</h4>
+                <p>Regístrate en nuestra plataforma en tan sólo 2 minutos y en menos de lo que te imaginas podrás tener acceso a cientos de ofertas de restaurantes en CDMX y Edo. de México.</p>
+            </div>
+            
+            <div class="col s4">
+                <i style="font-size: 100px;" class="material-icons">gps_fixed</i>
+              <h4>Entrevistas en movimiento</h4>
+              <p>En Restinder ya no tendrás que esperar a que el reclutador te responda. Nosotros hacemos ese trabajo por ti y en menos de 5 minutos te notificaremos el día y hora de tu entrevista. ¡Y listo, llego tu momento de impresionar!  </p>
+              
+            </div>
+            <div class="col s4">
+                <i style="font-size: 100px;" class="material-icons">account_circle</i>
+              <h4>Un solo sitio, toda la industria</h4>
+              <p>Encuentra las ofertas de trabajo de los principales restaurantes de México.</p>
+             
+            </div>
+      
+          </div>
+      
+      
+      
+      
+      
+      </section>
+
       <router-outlet></router-outlet>
+      <div class="fut">
+
+     
+      <footer class="page-footer">
+      <div class="footer-copyright">
+          <div class="container">
+          © 2018 Ironhacker Fernando Mendez
+          <a class="grey-text text-lighten-4 right" href="https://www.linkedin.com/in/fernando-mendez-rios-396061169/">Linkedin</a>
+          </div>
+        </div>
+      </footer>
+    </div>

@@ -4,7 +4,7 @@ const restaurantSchema = new require('mongoose').Schema({
     username: String,
     photoURL: {
         type: String,
-        default: "https://cdn4.iconfinder.com/data/icons/real-estate-1/512/alcohol_bar-512.png",
+        default: "http://www.kolobok.com.mx/wp-content/uploads/2017/04/banner-rest-min.jpg",
     },
     email: String,
     location:{

@@ -7,8 +7,8 @@ import {Observable} from 'rxjs'
   providedIn: 'root'
 })
 export class UserService {
-   url="http://localhost:3000"
-  //url=""
+  // url="http://localhost:3000"
+  url=""
   constructor(
     private http: Http
   ) { }
@@ -39,7 +39,7 @@ export class UserService {
   deliteVcancies(p): Observable<string>{
     return this.http.put(this.url+'/user/myvacancies/'+p._id, p)
     .pipe(map(res=>res.json()))
-  }
+  } 
   newInterview(obj): Observable<string>{
     return this.http.post(this.url+'/user/interview/'+obj._id, obj)
     .pipe(map(res=>res.json()))

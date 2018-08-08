@@ -40,7 +40,7 @@ router.put('/user/profile/:id',  uploads.single('image'), (req, res, next) => {
 //get vacancies 
 
 router.get('/user/vacancies/:id',(req, res) =>{
-    Vacancies.find({}).populate('restaurant')
+    Vacancies.find({}).populate('restaurant').sort({updated_at:-1})
         .then(vacancies=>{
             return res.status(202).json(vacancies)
             
@@ -88,7 +88,7 @@ router.put('/user/myvacancies/:id', (req, res, next) => {
 
 //new interview
 router.post('/user/interview/:id',(req,res)=>{
-    Interview.create(req.body)
+    Interview.create(req.body).sort({updated_at:-1})
     .then(interview=>{
         res.status(202).json(interview)
     })
@@ -111,7 +111,7 @@ router.put('/user/interview/:id',(req,res)=>{
 
 //interview of user
 router.get('/user/interview/:id',(req,res)=>{
-    Interview.find({user:req.params.id}).populate('restaurant').populate('vacancies')
+    Interview.find({user:req.params.id}).populate('restaurant').populate('vacancies').sort({updated_at:-1})
     .then(interview=>{
         res.status(200).json(interview)
     })
@@ -170,7 +170,7 @@ router.delete('/user/comments/:id', (req, res, next) => {
 
 //comments of user
 router.get('/user/comments/:id',(req,res)=>{
-    Comments.find({user:req.params.id}).populate('restaurant')
+    Comments.find({user:req.params.id}).populate('restaurant').sort({updated_at:-1})
     .then(comment=>{
         res.status(200).json(comment)
     })

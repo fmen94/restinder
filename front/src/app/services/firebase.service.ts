@@ -17,8 +17,8 @@ firebase.initializeApp(config);
   providedIn: 'root'
 })
 export class FirebaseService {
-   url="http://localhost:3000"
-  //url=""
+   //url="http://localhost:3000"
+  url=""
   
   constructor(
     private http: Http
